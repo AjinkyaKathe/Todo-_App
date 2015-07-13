@@ -1,0 +1,14 @@
+<table class="table table-bordered ">
+<% i=1 %>
+  <tr>
+    <th>Content</th>
+    <th>Action</th>
+   </tr>
+<% @todo_items.each do |item| %>
+ <tr>
+ <td><%= item.content %></td>
+
+   <td><%= link_to 'Delete' , todo_list_todo_item_path(@todo_list,todo_item.id),method: :delete,data:{confirm: "Are You Sure?"} %>
+ </tr>
+<%end%>
+</table>

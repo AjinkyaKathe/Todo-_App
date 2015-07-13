@@ -1,0 +1,45 @@
+<%= form_for(@todo_list) do |f| %>
+  <% if @todo_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todo_list.errors.count, "error") %> prohibited this todo_list from being saved:</h2>
+
+      <ul>
+      <% @todo_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+    <div class="field">
+
+
+
+      <%= check_box("hobbies", "Codeing", {} ,"yes" , "no") %>
+      <%= check_box("hobbies", "Management" , {} ,"yes" , "no")%>
+      <%= check_box("hobbies", "Playing" , {}, "yes" , "no")%>
+
+      <%= radio_button("todo","gender" ,"Male")%>
+      <%= radio_button("todo","gender" ,"Female")%>
+
+      <%= datetime_field("user","born_on")%>
+      <%= color_field("hashName", "color")%>
+
+
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+<% end %>
