@@ -5,6 +5,11 @@ class TodoListsController < ApplicationController
   # GET /todo_lists.json
   def index
       @todo_lists = TodoList.all
+      respond_to do |format|
+        format.html
+        format.csv {send_data @todo_lists.to_csv}
+        format.xls  #{send_data @todo_list.to_csv(col_sep: "/t" ) }
+      end
   end
 
   # GET /todo_lists/1
