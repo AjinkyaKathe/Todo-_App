@@ -1,23 +1,48 @@
-<?xml version="1.0"?>
+<?xml version = "1.0" ?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
           xmlns:o="urn:schemas-microsoft-com:office:office"
           xmlns:x="urn:schemas-microsoft-com:office:excel"
           xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
           xmlns:html="http://www.w3.org/TR/REC-html40">
-  <Worksheet ss:Name="Sheet1">
-    <Table>
-      <Row>
-        <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">Name</Data></Cell>
-        <Cell><Data ss:Type="String">Description</Data></Cell>
-      </Row>
-      <% @todo_lists.each do |product| %>
-          <Row>
-            <Cell><Data ss:Type="Number"><%= product.id %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= product.title %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= product.description %></Data></Cell>
-          </Row>
-      <% end %>
-    </Table>
-  </Worksheet>
+  <ss:Styles>
+    <ss:Style ss:ID="1">
+      <ss:Font ss:Bold="1"/>
+      <ss:Font ss:Color="#0044ff"/>
+    </ss:Style>
+  </ss:Styles>
+
+  <ss:Styles>
+    <ss:Style ss:ID="2">
+    </ss:Style>
+  </ss:Styles>
+
+  <ss:Styles>
+    <ss:Style ss:ID="3">
+      <Alignment ss:Vertical="Center"/>
+    </ss:Style>
+  </ss:Styles>
+    <Worksheet Name="Sheet1">
+         <Table>
+              <Row ss:StyleID="2" >
+                 <Cell ss:MergeAcross="2" ss:StyleID="3"><Data Type="String">Todo List </Data></Cell>
+              </Row>
+             <Row ss:StyleID="1" >
+               <Cell><Data Type="String">ID</Data></Cell>
+               <Cell><Data Type="String">Title</Data></Cell>
+               <Cell><Data Type="String">Description</Data></Cell>
+             </Row>
+
+         <% @todo_lists.each do |items| %>
+               <Column ss:Width="80"/>
+               <Column ss:Width="90"/>
+               <Column ss:Width="100"/>
+           <Row>
+               <Cell><Data Type="Integer"><%= items.id %></Data></Cell>
+               <Cell><Data Type="String"><%= items.title %></Data></Cell>
+               <Cell><Data Type="String"><%= items.description %></Data></Cell>
+           </Row>
+           <%end%>
+         </Table>
+    </Worksheet>
 </Workbook>
+

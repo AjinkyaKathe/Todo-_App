@@ -1,9 +1,20 @@
+<script>
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Todo Lists</h1>
 
 <table>
   <thead>
+    <tr>
+     <td><span style="color:#7014ff">Generate :</span>
+     <%= link_to "CSV", todo_lists_path(format: "csv") ,:style=>"color:blue"%>&nbsp;
+     <%= link_to "EXCEL" , todo_lists_path(format: "xls") ,:style=>"color:blue"%></h3></td>
+    </tr>
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -27,3 +38,9 @@
 <br>
 
 <%= link_to 'New Todo list', new_todo_list_path %>
+<div
+class="fb-like"
+data-share="true"
+data-width="450"
+data-show-faces="true">
+</div>
