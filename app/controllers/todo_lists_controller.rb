@@ -67,6 +67,11 @@ class TodoListsController < ApplicationController
     end
   end
 
+  def import
+    TodoList.import(params[:file])
+    redirect_to root_url ,notice: "TodoList Item Imported"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo_list

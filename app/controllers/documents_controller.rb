@@ -29,17 +29,17 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     #puts"~~~~~~~~~!!!!!#{@document.filename}"
-    Document_mailer.send_document(@document)
-    redirect_to @document
-    # respond_to do |format|
-    #   if @document.save
-    #     format.html { redirect_to @document, notice: 'Document was successfully created.' }
-    #     format.json { render :show, status: :created, location: @document }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @document.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    #Document_mailer.send_document(@document)
+    #redirect_to @document
+     # respond_to do |format|
+     #   if @document.save
+     #     format.html { redirect_to @document, notice: 'Document was successfully created.' }
+     #     format.json { render :show, status: :created, location: @document }
+     #   else
+     #     format.html { render :new }
+     #     format.json { render json: @document.errors, status: :unprocessable_entity }
+     #   end
+     # end
   end
 
   # PATCH/PUT /documents/1

@@ -6,6 +6,7 @@ class UserMailer < ApplicationMailer
     #   file.write(uploaded_io.read)
     # end
     attachments["photo.png"] = File.read("#{Rails.root}/photo.png")
+    #file = Document.last.url
     mail(:to => user.email  , :subject => "Successfully Registered ")
 
 
