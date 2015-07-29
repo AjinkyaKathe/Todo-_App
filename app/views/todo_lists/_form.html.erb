@@ -2,7 +2,6 @@
   <% if @todo_list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@todo_list.errors.count, "error") %> prohibited this todo_list from being saved:</h2>
-
       <ul>
       <% @todo_list.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -21,9 +20,6 @@
   </div>
 
     <div class="field">
-
-
-
       <%= check_box("hobbies", "Codeing", {} ,"yes" , "no") %>
       <%= check_box("hobbies", "Management" , {} ,"yes" , "no")%>
       <%= check_box("hobbies", "Playing" , {}, "yes" , "no")%>
@@ -33,8 +29,6 @@
 
       <%= datetime_field("user","born_on")%>
       <%= color_field("hashName", "color")%>
-
-
     </div>
 
   <div class="actions">

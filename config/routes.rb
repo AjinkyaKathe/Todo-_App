@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :documents
   resources :users
   get 'todo_items/controller'
 
   resources :todo_lists do
+    collection { post :import }
     resources  :todo_items
   end
 

@@ -14,6 +14,20 @@ class TodoList < ActiveRecord::Base
     end
   end
 
+  def self.import(file)
+    array = Array.new
+    CSV.foreach(file.path , col_sep:',') do |row |
+         array.push(row[1])
+      #TodoList.create! row.to_hash
+    end
+    i=0
+    array.each_with_index do |element,index|
+       i=i+1
+       puts element[]
+    end
+
+  end
+
  #validates :title ,:presence => true ,uniqueness: true
 #validates :description ,:presence => true
 end
