@@ -15,5 +15,12 @@
   <%= @user.contact %>
 </p>
 
+<p>
+ <strong>Attachment</strong>
+  <%= @user.document_file_name %>
+  <%= image_tag @user.document.url(:small) %>
+</p>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -7,9 +7,7 @@ gem 'rails', '4.2.1'
 gem 'mysql2'
 
 gem 'pg'
-
-
-gem 'paperclip'
+gem 'paperclip', '3.5.2'
 
 gem 'roo'
 # Use SCSS for stylesheets

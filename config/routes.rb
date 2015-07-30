@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :documents
-  resources :users
-  get 'todo_items/controller'
+  resources :users do
+    get 'download'
+
+  end
+  post 'users/delete_selected_user'
+
+
 
   resources :todo_lists do
     collection { post :import }

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
   end
 
   # GET /users/new
@@ -25,9 +26,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    UserMailer.registration_confirmation(@user).deliver
+    #@user = User.new(params[:user])
     respond_to do |format|
       if @user.save
+        UserMailer.registration_confirmation(@user).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -61,6 +63,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def download
+     # send_file '/home/it184/Project/Todo_app/non_public/images.jpeg',
+     #  :type => 'image/jpeg'
+    user = User.find(params[:user_id])
+    send_file user.document.path, :type => user.document_content_type
+  end
+
+  def delete_selected_user
+    redirect_to users_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -70,6 +83,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       #params.require(:user).permit(:name, :email, :contact, :file)
-      params.require(:user).permit(:name, :email, :contact)
+      params.require(:user).permit(:name, :email, :contact, :document)
     end
 end
