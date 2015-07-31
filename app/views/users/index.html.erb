@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Email Recipients </h1>
-
+<%= form_tag (users_delete_selected_user_path) do %>
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th></th>
+      <th>Select</th>
       <th>Id</th>
       <th>Name</th>
       <th>Email</th>
@@ -17,10 +17,12 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= check_box_tag(user.id)%></td>
+        <!--<td><%=check_box_tag(:check_user , user.id ,false,:class=>"user_checkbox")%></td>-->
+        <td><%= check_box_tag "check_user[user_ids][]",user.id%></td>
         <td><%= user.id %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
@@ -35,10 +37,16 @@
     <% end %>
   </tbody>
 </table>
+    <div class="pull-left">
+     <%= link_to 'Create Email', new_user_path ,:class =>"btn btn-primary btn-sm",:style=>"color:white" %>&nbsp;&nbsp;
+     <%= submit_tag "Delete",:class =>"btn btn-danger btn-sm" %>
+    </div>
+<% end %>
 
-<br>
 
-<%= link_to 'New User', new_user_path %>
-<%= button_to "Delete" ,action: 'delete_selected_user' %>
+
+
+
+
 
 

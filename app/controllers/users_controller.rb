@@ -71,7 +71,10 @@ class UsersController < ApplicationController
   end
 
   def delete_selected_user
-    redirect_to users_url
+    puts "````````````````#{params[:check_user][:user_ids]}"
+    User.where(:id => params[:check_user][:user_ids]).delete_all
+    redirect_to users_url,
+    notice: "User's where deleted Successfully !!!"
   end
 
   private
@@ -83,6 +86,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       #params.require(:user).permit(:name, :email, :contact, :file)
-      params.require(:user).permit(:name, :email, :contact, :document)
+      params.require(:user).permit(:name, :email, :contact, :document,:check_user)
     end
 end
